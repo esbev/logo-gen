@@ -4,9 +4,10 @@
   "description": "Takes user input from command line to create a simple logo as SVG file",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "run": "node index.js"
   },
+  "type": "module",
   "author": "",
   "license": "ISC",
   "keywords": [],

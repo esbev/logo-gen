@@ -1,9 +1,11 @@
-import inquirer from "inquirer";
-import fs from "fs";
+import inquirer from 'inquirer';
+import fs from 'fs';
+const {Triangle, Circle, Square} = require('./lib/shapes');
+
 let questions = [
   {
     name: "initials",
-    message: "Enter upto 3 characters."
+    message: "Enter up to 3 characters."
   },
   {
     name: "textColor",
@@ -25,15 +27,24 @@ async function createLogo() {
   await inquirer
     .prompt(questions)
     .then((input) => {
+      if (input.shape === "Triangle") {
+        let shape = new Triangle;
+      };
+      if (input.shape === "Circle") {
+        let shape = new Circle;
+      };
+      if (input.shape === "Square") {
+        let shape = new Square;
+      };
       let logoFile = buildLogo(input);
-      writeLogoFile(input.title, logoFile);
+      writeLogoFile(logoFile);
     })
     .catch((err) => {
       console.log(err);
     });
 }
 
-async function writeLogoFile(title, logoFile) {
+async function writeLogoFile(logoFile) {
   const svgFile = `logo.svg`;
 
   fs.writeFile(svgFile, logoFile, (err) => {
@@ -42,5 +53,8 @@ async function writeLogoFile(title, logoFile) {
 }
 
 function buildLogo(input) {
-  return ``
+  return `<svg xmlns="http://www.w3.org/2000/svg" version="1.1">`
+  +`${shape}`
+  +`<text x="150" y="150" font-size="60" text-anchor="middle" fill="${input.textColor}">${input.initials}</text>`
+  +`</svg>`
 }
