@@ -1,11 +1,13 @@
 import inquirer from 'inquirer';
 import fs from 'fs';
-const {Triangle, Circle, Square} = require('./lib/shapes');
+import {Triangle, Circle, Square} from './lib/shapes.cjs';
 
+let shape;
 let questions = [
   {
     name: "initials",
-    message: "Enter up to 3 characters."
+    message: "Enter up to 3 characters.",
+    maxLength: 3
   },
   {
     name: "textColor",
@@ -27,15 +29,31 @@ async function createLogo() {
   await inquirer
     .prompt(questions)
     .then((input) => {
-      if (input.shape === "Triangle") {
-        let shape = new Triangle;
-      };
-      if (input.shape === "Circle") {
-        let shape = new Circle;
-      };
-      if (input.shape === "Square") {
-        let shape = new Square;
-      };
+      switch (input.shape) {
+        case "Triangle":
+          shape = new Triangle;
+          break;
+        case "Circle":
+          shape = new Circle;
+          break;
+        case "Square":
+          shape = new Square;
+          break;
+        default:
+          shape = new Triangle;
+          break;
+      }
+
+      // if (input.shape === "Triangle") {
+      //   shape = new Triangle;
+      // };
+      // if (input.shape === "Circle") {
+      //   shape = new Circle;
+      // };
+      // if (input.shape === "Square") {
+      //   shape = new Square;
+      // };
+      shape.setColor(input.shapeColor);
       let logoFile = buildLogo(input);
       writeLogoFile(logoFile);
     })
@@ -54,7 +72,9 @@ async function writeLogoFile(logoFile) {
 
 function buildLogo(input) {
   return `<svg xmlns="http://www.w3.org/2000/svg" version="1.1">`
-  +`${shape}`
-  +`<text x="150" y="150" font-size="60" text-anchor="middle" fill="${input.textColor}">${input.initials}</text>`
+  +`${shape.render()}`
+  +`fill="${input.textColor}">${input.initials}</text>`
   +`</svg>`
 }
+
+createLogo();
