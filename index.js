@@ -7,7 +7,7 @@ let questions = [
   {
     name: "initials",
     message: "Enter up to 3 characters.",
-    maxLength: 3
+    validate: 3
   },
   {
     name: "textColor",
@@ -44,15 +44,6 @@ async function createLogo() {
           break;
       }
 
-      // if (input.shape === "Triangle") {
-      //   shape = new Triangle;
-      // };
-      // if (input.shape === "Circle") {
-      //   shape = new Circle;
-      // };
-      // if (input.shape === "Square") {
-      //   shape = new Square;
-      // };
       shape.setColor(input.shapeColor);
       let logoFile = buildLogo(input);
       writeLogoFile(logoFile);
