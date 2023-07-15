@@ -7,7 +7,6 @@ let questions = [
   {
     name: "initials",
     message: "Enter up to 3 characters.",
-    validate: 3
   },
   {
     name: "textColor",
