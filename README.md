@@ -11,6 +11,7 @@ Allows a user to create a simple logo with 3 characters as an SVG file from comm
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
+- [Tests]
 - [Questions](#questions)
 - [License](#license)
 
@@ -30,7 +31,7 @@ Screenshot
 
 Demo
 
-![demo](./examples/project-demo.gif)
+![demo](./videos/project-demo.gif)
 
 ## Installation
 
@@ -44,6 +45,10 @@ Demo
 ## Credits
 
 Inquirer documentation: https://www.npmjs.com/package/inquirer
+
+## Tests
+
+![test](./videos/shape-tests.gif)
 
 ## Questions
 
