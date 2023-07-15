@@ -11,7 +11,7 @@ Allows a user to create a simple logo with 3 characters as an SVG file from comm
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
-- [Tests]
+- [Tests](#tests)
 - [Questions](#questions)
 - [License](#license)
 
